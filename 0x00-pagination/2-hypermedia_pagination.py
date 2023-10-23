@@ -79,11 +79,11 @@ class Server:
         res['data'] = data
         res['page'] = page
         res['total_pages'] = ceil(len(self.dataset()) / page_size)
-        if page == 1:
+        if page <= 1:
             res['prev_page'] = None
         else:
             res['prev_page'] = page - 1
-        if page > res['total_pages']:
+        if page >= res['total_pages']:
             res['next_page'] = None
         else:
             res['next_page'] = page + 1
